@@ -23,8 +23,8 @@ console.log(buttonText);
 
 console.clear();
 
-button.textContent ="<b>to do ekleyin <b>";
-button.innerHTML ="<b>todo ekleyin <b>"
+button.textContent = "<b>to do ekleyin <b>";
+button.innerHTML = "<b>todo ekleyin <b>"
 
 const toDoList = Array.from(document.getElementsByClassName("list-group-item"));
 
@@ -53,7 +53,7 @@ console.clear();
 const lis = Array.from(document.querySelectorAll("li:nth-child(even)"));
 console.log(lis);
 
-lis.forEach(function(li){
+lis.forEach(function (li) {
     li.style.color = "tomato";
 })
 
@@ -62,4 +62,26 @@ lis.forEach(function(li){
 const li2 = document.querySelectorAll("li")[1];
 
 li2.style.background = "black";
-console.log(li2);
+
+console.clear();
+
+
+const todo1 = document.querySelector(".list-group-item");
+const todoList = document.querySelector(".list-group");
+const card = document.getElementsByClassName("card");
+// const todoLastChild = document.querySelector(".list-group-item:nth-child(4)");
+const todoLastChild = document.querySelectorAll(".list-group-item")[3];
+const row = document.querySelector(".row");
+
+let value;
+
+value = todoList.children[1];
+
+value = todo1.previousElementSibling;
+
+
+let baslik = row.children[0].children[3].children[0];
+baslik.textContent="değişmiş H5";
+
+
+
