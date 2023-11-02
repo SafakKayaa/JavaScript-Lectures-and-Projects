@@ -168,3 +168,20 @@ function showEvent(e) {
 // console.log(editedProducts);
 // console.log(products);
 
+// document.addEventListener("DOMContentLoaded", welcome);
+
+function welcome() {
+  alert("welcome to my website!");
+}
+
+// window.addEventListener("load", welcome);
+
+
+// cardBody.firstElementChild.addEventListener("mouseover", welcome)
+
+cardBody.children[1].firstElementChild.addEventListener("click", run);
+
+function run(e) {
+  console.log(e.target)
+}
+
