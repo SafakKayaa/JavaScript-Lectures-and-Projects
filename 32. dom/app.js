@@ -29,7 +29,7 @@ button.innerHTML = "<b>todo ekleyin <b>"
 const toDoList = Array.from(document.getElementsByClassName("list-group-item"));
 
 toDoList.forEach(todo => {
-    console.log(todo.textContent);
+  console.log(todo.textContent);
 });
 
 
@@ -54,7 +54,7 @@ const lis = Array.from(document.querySelectorAll("li:nth-child(even)"));
 console.log(lis);
 
 lis.forEach(function (li) {
-    li.style.color = "tomato";
+  li.style.color = "tomato";
 })
 
 // const li2 = document.querySelectorAll("li:nth-child(2)");
@@ -81,7 +81,7 @@ value = todo1.previousElementSibling;
 
 
 let baslik = row.children[0].children[3].children[0];
-baslik.textContent="değişmiş H5";
+baslik.textContent = "değişmiş H5";
 
 console.clear();
 
@@ -139,4 +139,32 @@ newTitle.textContent = "Yeni Başlık"
 const oldTitle = cardBody.children[0];
 
 cardBody.replaceChild(newTitle, oldTitle);
+
+
+clearButton.addEventListener("click", removeLis);
+
+function removeLis() {
+  lis.forEach(function (li) {
+    li.remove();
+  })
+}
+
+todo1.addEventListener("click", showEvent)
+
+function showEvent(e) {
+  e.target.style.background = "yellow";
+}
+
+// const products = [
+//   { name: "sports car" },
+//   { name: "laptop" },
+//   { name: "phone" },
+// ];
+
+// let editedProducts = products.map((product) => {
+//   return product.price = 100;
+// });
+
+// console.log(editedProducts);
+// console.log(products);
 
