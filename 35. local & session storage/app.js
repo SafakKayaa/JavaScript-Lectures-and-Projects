@@ -2,12 +2,12 @@
 // sessionStorage.setItem("150", "şafak");
 // sessionStorage.setItem(true, 150);
 
-// // sessionStorage.removeItem(true)
+// sessionStorage.removeItem(true)
 
-// // const value = sessionStorage.getItem(true);
+// const value = sessionStorage.getItem(true);
 
-// // console.log(value);
-// // sessionStorage.clear();
+// console.log(value);
+// sessionStorage.clear();
 
 // const sınıf = ["lütfü", "şafak", "ömer", "kemal"];
 // sessionStorage.setItem("sınıf", JSON.stringify(sınıf));
@@ -21,7 +21,7 @@ const firstCardBody = document.querySelectorAll(".card-body")[0];
 const secondCardBody = document.querySelectorAll(".card-body")[1];
 const clearButton = document.querySelector("#clearButton");
 const filterInput = document.querySelector("#todoSearch");
-
+let todos = [];
 
 runEvents();
 
@@ -33,13 +33,13 @@ function runEvents() {
 function addTodo(e) {
   const inputText = addInput.value.trim();
   if (inputText == null || inputText == "") {
-    alert("Lütfen boş bırakmayınız!");
+    showAlert("danger", "Lütfen boş değer girmeyiniz!")
   } else {
     //Arayüze ekleme
     addTodoToUI(inputText);
+    addToDoToStorage(inputText);
+    showAlert("success", "Todo başarıyla eklendi");
   }
-
-  //storage ekleme
   e.preventDefault();
 }
 
@@ -60,5 +60,32 @@ function addTodoToUI(newTodo) {
   li.appendChild(a);
   todoList.appendChild(li);
 
-//! neden yazmış ki bunu:  addInput.value = "";
+  addInput.value = "";
+}
+
+function addToDoToStorage(newTodo) {
+  checkToDosFromStorage();
+  todos.push(newTodo);
+  localStorage.setItem("todos", JSON.stringify(todos));
+}
+
+
+function checkToDosFromStorage() {
+  if (localStorage.getItem("todos") == null) {
+    todos = [];
+  } else {
+    todos = JSON.parse(localStorage.getItem("todos"));
+  }
+}
+
+
+function showAlert(type, message) {
+  const div = document.createElement("div");
+  // div.className = "alert alert-" + type;
+  div.className = `alert alert-${type}`; //literal template
+  div.textContent = message;
+  firstCardBody.appendChild(div);
+  setTimeout(() => {
+    div.remove();
+  }, 2500);
 }
