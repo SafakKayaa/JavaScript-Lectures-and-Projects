@@ -29,6 +29,7 @@ function runEvents() {
   form.addEventListener("submit", addTodo);
   document.addEventListener("DOMContentLoaded", pageLoaded);
   secondCardBody.addEventListener("click", removeTodoFromUI);
+  clearButton.addEventListener("click", removeAllTodos);
 
 }
 
@@ -117,4 +118,12 @@ function removeTodoFromStorage(removeTodo) {
   });
   localStorage.setItem("todos", JSON.stringify(todos))
 
+}
+
+function removeAllTodos(){
+  const varOlanTodoListesi = document.querySelectorAll(".list-group-item");
+    varOlanTodoListesi.forEach(todo => {
+      todo.remove();
+    });
+  localStorage.clear();
 }
