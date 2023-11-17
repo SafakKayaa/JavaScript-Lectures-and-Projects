@@ -30,7 +30,7 @@ function runEvents() {
   document.addEventListener("DOMContentLoaded", pageLoaded);
   secondCardBody.addEventListener("click", removeTodoFromUI);
   clearButton.addEventListener("click", removeAllTodos);
-
+  filterInput.addEventListener("keyup", filter);
 }
 
 function addTodo(e) {
@@ -120,10 +120,24 @@ function removeTodoFromStorage(removeTodo) {
 
 }
 
-function removeAllTodos(){
+function removeAllTodos() {
   const varOlanTodoListesi = document.querySelectorAll(".list-group-item");
-    varOlanTodoListesi.forEach(todo => {
-      todo.remove();
-    });
+  varOlanTodoListesi.forEach(todo => {
+    todo.remove();
+  });
   localStorage.clear();
+}
+
+function filter(e) {
+  const filterValue = e.target.value.toUpperCase().trim();
+  const todoListesi = document.querySelectorAll(".list-group-item");
+
+  todoListesi.forEach(todo => {
+    if (todo.textContent.toUpperCase().trim().includes(filterValue)) {
+      todo.setAttribute("style", "display:block");
+    } else {
+      todo.setAttribute("style", "display:none !important");
+    }
+  });
+
 }
