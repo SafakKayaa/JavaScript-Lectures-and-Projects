@@ -31,7 +31,7 @@
 //   return dizi;
 // }
 
-// // console.log(hesapla(2, 10));
+ // console.log(hesapla(2, 10));
 
 //  let [x,y] = hesapla(2, 10);
 
